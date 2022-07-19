@@ -1,0 +1,74 @@
+{
+  "name": "error-reporting-lev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./*": {
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.cjs"
+    }
+  },
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "baseline": "npx tsc --extendedDiagnostics",
+    "explain": "npx tsc --explainFiles > explanation.txt",
+    "trace": "npx tsc --traceResolution > resolution.txt",
+    "profile": "node --trace-ic ./node_modules/typescript/lib/tsc.js --generateCpuProfile profile.cpuprofile -p tsconfig.json",
+    "tracer": "mkdir -p tmp_folder/ && npx tsc -p ./tsconfig.json --generateTrace tmp_folder",
+    "test": "echo \"Fail: no test specified\" && exit 127",
+    "compile": "npx rollup -c rollup.config.js",
+    "fmt": "npx prettier --config .prettierrc.js --write src/**/*.ts",
+    "docs": "npx typedoc src/index.ts --hideGenerator --readme --gitRemote --cleanOutputDir"
+  },
+  "dependencies": {
+    "fastest-levenshtein": "https://github.com/sambacha/fastest-levenshtein/releases/download/1.0.13/fastest-levenshtein-1.0.13.tgz"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.18.9",
+    "@babel/plugin-transform-typescript": "^7.18.8",
+    "@babel/preset-typescript": "^7.18.6",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "babel-plugin-polyfill-regenerator": "^0.3.1",
+    "browserslist": "^4.21.2",
+    "downlevel-dts": "^0.10.0",
+    "esbuild": "^0.14.49",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-scope": "^7.1.1",
+    "prettier": "^2.7.1",
+    "rollup": "^2.77.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "to-regex-range": "^5.0.1",
+    "tslib": "^2.4.0",
+    "typedoc": "^0.23.8",
+    "typescript": "4.6.3",
+    "typescript-eslint-language-service": "^5.0.0",
+    "v8-compile-cache": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambacha/safe-result-boundry.git"
+  },
+  "keywords": [],
+  "author": "sam bacha <sam@manifoldfinance.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/sambacha/safe-result-boundry/issues"
+  },
+  "homepage": "https://github.com/sambacha/safe-result-boundry#readme"
+}
