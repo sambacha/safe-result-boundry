@@ -38,5 +38,4 @@ export function getProperError(err: unknown): Error {
   }
 
   return new Error(isPlainObject(err) ? JSON.stringify(err) : err + '')
-}
-Footer
+};
