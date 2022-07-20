@@ -8,6 +8,7 @@ const myers_32 = (a, b) => {
   let sc = n;
   let i = n;
   while (i--) {
+// charCodeAt() method returns an integer between 0 and 65535 
     peq[a.charCodeAt(i)] |= 1 << i;
   }
   for (i = 0; i < m; i++) {
@@ -35,8 +36,8 @@ const myers_32 = (a, b) => {
 const myers_x = (b, a) => {
   const n = a.length;
   const m = b.length;
-  const mhc = [];
-  const phc = [];
+  const mhc = <number[]>[];
+  const phc = <number[]>[];
   const hsize = Math.ceil(n / 32);
   const vsize = Math.ceil(m / 32);
   for (let i = 0; i < hsize; i++) {
@@ -136,22 +137,4 @@ const closest = (str, arr) => {
   return arr[min_index];
 };
 
-const div = document.getElementById("four-oh-four-suggestion");
-if (div != null) {
-  const xhr = new XMLHttpRequest();
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      const xml = xhr.responseXML;
-      const urls = Array.from(xml.querySelectorAll("urlset > url > loc")).map((el) => el.textContent);
-      const url = new URL(closest(window.location.href, urls));
-      div.innerHTML = `<a href="${url.href}">${url.pathname}</a>`;
-    } else {
-      div.innerHTML = '<a href="/">/</a>';
-    }
-  };
-  xhr.open("GET", `${window.location.protocol}//${window.location.host}/sitemap.xml`);
-  xhr.send();
-} else
-  throw new Error("Err.Boundry Non-200 Status Code");
-
-export { div as default, div };
+export { closest, distance };

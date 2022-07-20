@@ -1,4 +1,4 @@
-import { closest } from 'fastest-levenshtein/dist';
+import { closest } from './fastest-levenshtein';
 
 export interface XhrError extends Error{
   status: XMLHttpRequest['status'];
@@ -6,8 +6,9 @@ export interface XhrError extends Error{
   url: string;
 };
 
-  export const div = document.getElementById('four-oh-four-suggestion');
-  if (div) {
+  export const div = document.getElementById('four-oh-four-suggestion') as HTMLInputElement | null;
+
+  if (div != null) {
     const xhr = new XMLHttpRequest();
 
     xhr.onload = () => {
@@ -28,8 +29,6 @@ export interface XhrError extends Error{
 
 
   } else
+throw new Error('Err.Boundry Non-200 Status Code');
 
-  // @throws Error.Boundry
-  throw new Error('Err.Boundry Non-200 Status Code');
-
-export default div
+export default div;

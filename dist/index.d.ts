@@ -3,6 +3,6 @@ interface XhrError extends Error {
     method: string;
     url: string;
 }
-declare const div: HTMLElement | null;
+declare const div: HTMLInputElement | null;
 
 export { XhrError, div as default, div };

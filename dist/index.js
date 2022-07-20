@@ -1,7 +1,7 @@
-import { closest } from 'fastest-levenshtein/dist';
+import { closest } from './fastest-levenshtein';
 ;
 export const div = document.getElementById('four-oh-four-suggestion');
-if (div) {
+if (div != null) {
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
         if (xhr.status === 200) {
