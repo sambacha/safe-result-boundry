@@ -1,8 +1,3 @@
-interface XhrError extends Error {
-    status: XMLHttpRequest['status'];
-    method: string;
-    url: string;
-}
-declare const div: HTMLInputElement | null;
-
-export { XhrError, div as default, div };
+export * from './fastest-levenshtein';
+import * as SafeBoundary from './lib.js';
+export { SafeBoundary };
