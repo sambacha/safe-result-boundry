@@ -16,6 +16,7 @@
     "src"
   ],
   "scripts": {
+    "build": "npx microbundle build --target web --no-compress",
     "compile": "npx rollup -c rollup.config.js",
     "baseline": "npx tsc --extendedDiagnostics",
     "explain": "npx tsc --explainFiles > explanation.txt",
